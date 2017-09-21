@@ -1,0 +1,226 @@
+#!/bin/python3
+
+
+------------------------------
+------------------------------
+
+[1]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+
+print(alphabet[0])
+print(alphabet[3])
+print(alphabet[25])
+
+------
+
+[2]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+
+character = input('please enter a character: ')
+
+position = alphabet.find(character)
+print(position)
+
+------
+
+[3]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+
+character = input('please enter a character: ')
+
+position = alphabet.find(character)
+print(position)
+
+newPosition = position + key
+print(newPosition)
+
+------
+
+[4]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+
+character = input('please enter a character: ')
+
+position = alphabet.find(character)
+print(position)
+
+newPosition = (position + key) % 26
+print(newPosition)
+
+------
+
+[5]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+
+character = input('Please enter a character:')
+
+position = alphabet.find(character)
+
+newPosition = (position + key) % 26
+
+newCharacter = alphabet[newPosition]
+print('The new character is:', newCharacter )
+
+------
+------
+
+[6]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+position = alphabet.find(character)
+newPosition = (position + key) % 26
+newCharacter = alphabet[newPosition]
+print('The new character is:', newCharacter )
+
+------
+
+[7]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+for character in message:
+  position = alphabet.find(character)
+  newPosition = (position + key) % 26
+  newCharacter = alphabet[newPosition]
+  print('The new character is:', newCharacter )
+
+------
+
+[8]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+for character in message:
+  position = alphabet.find(character)
+  newPosition = (position + key) % 26
+  newCharacter = alphabet[newPosition]
+  print('The new character is:', newCharacter )
+  newMessage += newCharacter
+
+------
+
+[9]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+for character in message:
+  position = alphabet.find(character)
+  newPosition = (position + key) % 26
+  newCharacter = alphabet[newPosition]
+  #print(`The new character is:`, newCharacter )
+  newMessage += newCharacter
+
+print('The new message is:', newMessage )
+
+------
+------
+
+[10]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+for character in message:
+  if character in alphabet:
+    position = alphabet.find(character)
+    newPosition = (position + key) % 26
+    newCharacter = alphabet[newPosition]
+    newMessage += newCharacter
+
+print('The new message is:', newMessage )
+
+------
+
+[11]
+
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+key = 3
+newMessage = ''
+
+message = input('Please enter a message:')
+
+for character in message:
+  if character in alphabet:
+    position = alphabet.find(character)
+    newPosition = (position + key) % 26
+    newCharacter = alphabet[newPosition]
+    newMessage += newCharacter
+  else:
+    newMessage += character
+
+print('The new message is:', newMessage )
+
+------------------------------
+------------------------------
+
+
+
+
+
+
+
+
+
+
