@@ -2,7 +2,12 @@
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+key = 13
 
-print(alphabet[0])
-print(alphabet[3])
-print(alphabet[25])
+character = input('please enter a character: ')
+
+position = alphabet.find(character)
+print(position)
+
+newPosition = (position + key) % 52
+print(newPosition)
