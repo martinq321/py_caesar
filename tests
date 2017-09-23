@@ -1,0 +1,8 @@
+#!/bin/python3
+
+alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
+print(alphabet[0])
+print(alphabet[3])
+print(alphabet[25])
