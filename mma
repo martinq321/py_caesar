@@ -1,0 +1,142 @@
+rotN[str_String, n_Integer: 13] := 
+ Module[{rule = 
+    Normal@Join[
+      AssociationThread[#, RotateRight[#, n]] &[
+       CharacterRange["a", "z"]], 
+      AssociationThread[#, RotateRight[#, n]] &[
+       CharacterRange["A", "Z"]]]}, StringReplace[str, rule]]
+
+rotN["Mathematica Stackexchange, Zngurzngvpn Fgnpxrkpunatr", 13]
+
+caesar[st_String, n_Integer: 13] := 
+  Module[{aa}, 
+   aa = Flatten[{#, Capitalize@#}] &@CharacterRange["a", "z"]; 
+   StringReplace[st, 
+    Thread[aa -> Flatten[RotateRight[#, n] & /@ TakeDrop[aa, 26]]]]];
+caesar@"Hello, how are you?"
+
+blank1 = Graphics[{Circle[{0, 0}, 1], Circle[{0, 0}, 3/4], 
+     Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+        Range[26]), White, Disk[{0, 0}, 1/2], Black, 
+     Circle[{0, 0}, 1/2]}] &[10]
+
+blank2a = 
+ Graphics[{Circle[{0, 0}, 1], 
+     Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+        Range[26]), White, Disk[{0, 0}, 3/4], Black, 
+     Circle[{0, 0}, 3/4], Black, Point[{0, 0}]}] &[10]
+
+blank2b = 
+ Graphics[{Circle[{0, 0}, 1], 
+     Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 3/4}} & /@ 
+        Range[26]), Black, Circle[{0, 0}, 3/4], White, 
+     Disk[{0, 0}, 1/2], Black, Circle[{0, 0}, 1/2], Point[{0, 0}]}] &[
+  10]
+
+filleda = 
+ Graphics[{Circle[{0, 0}, 1], 
+     Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+        Range[26]), White, Disk[{0, 0}, 3/4], Black, 
+     Circle[{0, 0}, 3/4], Black, 
+     Point[{0, 
+       0}], (Rotate[
+         Text[Style[#[[2]], 30], {0, 7/8}], (#[[1]] - .5)*2 Pi/26, {0,
+           0}] & /@ 
+       Thread@{Range@26, Reverse@CharacterRange["A", "Z"]})}] &[10]
+
+filledb = 
+ Graphics[{Dashing[.01], Circle[{0, 0}, 1], Dashing[None], 
+     Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 3/4}} & /@ 
+        Range[26]), Black, Circle[{0, 0}, 3/4], White, 
+     Disk[{0, 0}, 1/2], Black, Circle[{0, 0}, 1/2], 
+     Point[{0, 
+       0}], (Rotate[
+         Text[Style[#[[2]], 20], {0, 5/8}], (#[[1]] - .5)*2 Pi/26, {0,
+           0}] & /@ 
+       Thread@{Range@26, Reverse@CharacterRange["A", "Z"]})}] &[10]
+
+filled = With[{t = #}, 
+    Graphics[{Circle[{0, 0}, 1], Circle[{0, 0}, 3/4], 
+      Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+         Range[26]), White, Disk[{0, 0}, 1/2], Black, 
+      Circle[{0, 0}, 1/2],
+      (Rotate[
+          Text[Style[#[[2]], 30], {0, 7/8}], (#[[1]] - .5)*2 Pi/
+            26, {0, 0}] & /@ 
+        Thread@{Range@26, Reverse@CharacterRange["A", "Z"]}),
+      (Rotate[
+          Text[Style[#[[2]], 20], {0, 5/8}], (#[[1]] - .5 + t)*2 Pi/
+            26, {0, 0}] & /@ 
+        Thread@{Range@26, Reverse@CharacterRange["A", "Z"]})
+      }]] &[13]
+
+caesarCircle[n_] := 
+  Graphics[{Circle[{0, 0}, 1], Circle[{0, 0}, 3/4], 
+    Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+       Range[26]), White, Disk[{0, 0}, 1/2], Black, 
+    Circle[{0, 0}, 1/2],
+    (Rotate[
+        Text[Style[#[[2]], 30], {0, 7/8}], (#[[1]] - .5)*2 Pi/26, {0, 
+         0}] & /@ Thread@{Range@26, Reverse@CharacterRange["A", "Z"]}),
+    (Rotate[
+        Text[Style[#[[2]], 20], {0, 5/8}], (#[[1]] - .5 + n)*2 Pi/
+          26, {0, 0}] & /@ 
+      Thread@{Range@26, Reverse@CharacterRange["A", "Z"]})
+    }];
+
+caesarCircle@2
+
+caesarCircleG[n_] := 
+  Graphics[{Circle[{0, 0}, 1], Circle[{0, 0}, 3/4], 
+    Nest[Lighter, Gray, 3], Disk[{0, 0}, 3/4], Black, 
+    Line /@ ({{0, 0}, RotationMatrix[# 2 Pi/26].{0, 1}} & /@ 
+       Range[26]), White, Disk[{0, 0}, 1/2], Black, 
+    Circle[{0, 0}, 1/2],
+    (Rotate[
+        Text[Style[#[[2]], 30], {0, 7/8}], (#[[1]] - .5)*2 Pi/26, {0, 
+         0}] & /@ Thread@{Range@26, Reverse@CharacterRange["A", "Z"]}),
+    (Rotate[
+        Text[Style[#[[2]], 20], {0, 5/8}], (#[[1]] - .5 + n)*2 Pi/
+          26, {0, 0}] & /@ 
+      Thread@{Range@26, Reverse@CharacterRange["A", "Z"]})
+    }];
+
+caesarCircleG@13
+
+Export["caesarCircleG.pdf", caesarCircleG@13]
+
+Export["caesarCircle.pdf", caesarCircle@13]
+
+rotN[str_String, n_Integer: 13] := 
+  Module[{rule = 
+     Normal@Join[
+       AssociationThread[#, RotateRight[#, n]] &[
+        CharacterRange["a", "z"]], 
+       AssociationThread[#, RotateRight[#, n]] &[
+        CharacterRange["A", "Z"]]]}, StringReplace[str, rule]];
+wrap[string_, length_] := Module[{g, h, l, a, b},
+   g[l_, n_] := 
+    Drop[l, Length@Flatten[{#[[1]], Differences@#}] &@
+      TakeWhile[Tr@Take[l, #] & /@ Range@Length@l, # <= n &]];
+   h[l_, n_] := 
+    Tr /@ (Drop[#[[1]], -Length@#[[2]]] & /@ 
+         Thread@{Most@#, Rest@#} &@
+       NestWhileList[g[#, n] &, l, Length@# > 0 &]);
+   l = Characters[string <> " "];
+   a = Flatten[{#[[1]], Differences@#}] &@Flatten@Position[l, " "];
+   b = Most@PadRight[#, length + 1, " "] & /@ 
+     Rest@FoldList[TakeDrop[#[[2]], #2] &, {{}, l}, 
+        h[a, length + 1]][[All, 1]];
+   Grid[Flatten[{#, ConstantArray[" ", Length@#]} & /@ b, 1], 
+    Frame -> All, FrameStyle -> {Thickness[.0001]}, ItemSize -> All, 
+    Background -> {None, {{White, Nest[Lighter, Gray, 3]}}}]];
+
+wrap[#, 10] &@
+ rotN["DO YOU KNOW ANYTHING ABOUT THE CHAMBER OF SECTRETS?"]
+
+Export["message01.pdf", 
+ wrap[#, 11] &@
+  rotN["DO YOU KNOW ANYTHING ABOUT THE CHAMBER OF SECTRETS?"]]
+
+wrap[#, 10] &@
+ caesar["DO YOU KNOW ANYTHING ABOUT THE CHAMBER OF SECTRETS?"]
