@@ -248,11 +248,6 @@ for character in message:
 
 print('The new message is:', newMessage )
 
-# L:
-# cd L:\OneDrive\HARD_DRIVE_SYNC\coding LNS
-# python text.py
-
-
 
 
 
